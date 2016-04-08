@@ -1,0 +1,28 @@
+﻿<UserControl
+    x:Class="LedighedsApp.View.UserControls.CalendarItem"
+    x:Name="CalendarItemName"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400" Loaded="UserControl_Loaded">
+
+    <Grid Name="ItemBox" FlowDirection="RightToLeft">
+        <TextBlock Name="ItemValue" Text="1" FontSize="20" Margin="0,0,0,0" Foreground="Ivory" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <ItemsControl x:Name="ActivitiesContainer" Height="20" Margin="0" VerticalAlignment="Bottom" FlowDirection="RightToLeft" ItemsSource="{Binding ElementName=CalendarItemName, Path=CalendarItems}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Margin="0, 0, 2, 0" Width="7" Height="7" Fill="{Binding RGBColor}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

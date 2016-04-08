@@ -1,0 +1,128 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="LedighedsApp.View.AchievementView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View"
+    xmlns:assets="using:LedighedsApp.Model.Assets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:BottomBar="using:LedighedsApp.View.UserControls.BottomBar"
+    xmlns:viewmodel="using:LedighedsApp.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"                >
+	
+    <Page.Resources>
+        
+        <assets:DateTimeConverter x:Name="DateTimeConverter" />
+        <assets:AchievementImagePath x:Name="ImagePathConverter" />
+        <assets:HighLightColor x:Name="HighLightColor" />
+        
+		<DataTemplate x:Key="AchievmentListTemplate">
+            
+            <Border BorderBrush="{Binding HasBeenSeen, Converter={StaticResource HighLightColor}}" BorderThickness="2" CornerRadius="8" Margin="0, 0, 0, 10" Background="Ivory">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Width="90" Height="90" Margin="10" Source="{Binding Achievement.Icon, Converter={StaticResource ImagePathConverter}}" />
+                    
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock Foreground="DarkSlateGray" Text="{Binding Achievement.Title}" FontSize="20" Margin="0, 8, 0, 0" />
+                        <TextBlock Foreground="CornflowerBlue" FontSize="16" Margin="0, 3, 0, 0" >
+                            <Run Text="{Binding Date, Converter={StaticResource DateTimeConverter}}" />
+                        </TextBlock>
+                    </StackPanel>
+                    
+                </Grid>
+            </Border>
+			
+		</DataTemplate>
+
+        <DataTemplate x:Key="UnearnedAchievmentListTemplate">
+
+            <Border BorderBrush="Ivory" BorderThickness="2" CornerRadius="8" Margin="0, 0, 0, 10" Background="Ivory" Opacity="0.7">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Width="90" Height="90" Margin="10" Source="{Binding Icon, Converter={StaticResource ImagePathConverter}}" />
+
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock Foreground="DarkSlateGray" Text="{Binding Title}" FontSize="20" Margin="0, 8, 0, 0" />
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid x:Name="MainGrid" Style="{StaticResource gridBackground}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="85" />
+        </Grid.RowDefinitions>
+        
+        <Grid.DataContext>
+            <viewmodel:AchievementVm />
+        </Grid.DataContext>
+        
+        <Grid Background="Ivory" Grid.Row="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0, 0, 0, 1" BorderBrush="CornflowerBlue"/>
+            <StackPanel x:ConnectionId='2' Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" Height="Auto" Width="Auto" VerticalAlignment="Top" Margin="3,0,0,0"                         >
+                <Button Style="{StaticResource ImageButton}" Height="55" Width="39" MinHeight="30" MinWidth="30">
+                    <Button.Content>
+                        <Image Source="../../../Assets/Images/Buttons/GoBack.png" Height="29" Width="29" />
+                    </Button.Content>
+                </Button>
+                <TextBlock Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Content[GO_BACK]}" Margin="-4, 19, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="Auto" Width="Auto" VerticalAlignment="Top" Margin="0,0,3,0" >
+                <TextBlock Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="20" Text="{Binding Content[PAGE_ACHIEVEMENTS]}" Margin="0, 15, 12, 0"/>
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0, 0, 0, -25">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <StackPanel Orientation="Vertical">
+                    <ListView x:Name="EarnedAchievementsList" Margin="20, 10, 20, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                              ItemTemplate="{StaticResource AchievmentListTemplate}" ItemsSource="{Binding EarnedAchievements}" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+
+                    <ListView x:Name="UnearnedAchievementsList" Margin="20, 0, 20, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                              ItemTemplate="{StaticResource UnearnedAchievmentListTemplate}" ItemsSource="{Binding UnearnedAchievements}" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                       
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>   
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <BottomBar:BottomBar VerticalAlignment="Bottom" />
+        </Grid>
+        
+    </Grid>
+</Page>
+

@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="LedighedsApp.View.UserControls.CalendarDateItem"
+    x:Name="CalendarDateItemName"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="UserControl_Loaded">
+
+    <Grid Name="MainGrid">
+    <Border BorderThickness="0, 1, 0, 0" BorderBrush="CornflowerBlue" Background="Ivory" Padding="0, 3, 0, 3" MinHeight="60">
+        <Grid Name="ItemBox" Background="Ivory">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderThickness="0, 0, 5, 0" BorderBrush="Silver" VerticalAlignment="Stretch">
+                <TextBlock x:Name="TimeBox"  Text="1" FontSize="16" Margin="0, 3, 4, 0" Foreground="DarkSlateGray" VerticalAlignment="Top" HorizontalAlignment="Right" Width="Auto" />
+            </Border>
+                <ItemsControl x:Name="ActivitiesContainer" Grid.Column="1" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Top" ItemsSource="{Binding ElementName=CalendarDateItemName, Path=CalendarItemsShow}" HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
+                    <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="Auto" Background="Ivory" HorizontalAlignment="Stretch" VerticalAlignment="Top" Tapped="UIElement_OnTapped" DataContext="{Binding}">
+                                <StackPanel  Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal">
+                                    <Ellipse  Margin="8, 3, 0, 3" Width="7" Height="7"  Fill="{Binding RGBColor}"/>
+                                    <TextBlock HorizontalAlignment="Left" Foreground="DarkSlateGray" Width="Auto"  FontSize="16" Text="{Binding Title}" Margin="4, 3, 0, 3"/>
+                                </StackPanel>
+                                <StackPanel  Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal">
+                                    <TextBlock Name="SubHeader" HorizontalAlignment="Left" Foreground="DarkSlateGray" Width="Auto"  FontSize="16" Margin="4, 3, 0, 3"/>
+                                </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Border>
+    </Grid>
+</UserControl>

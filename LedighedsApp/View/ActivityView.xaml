@@ -1,0 +1,182 @@
+﻿<Page
+    x:Class="LedighedsApp.View.ActivityView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:BottomBar="using:LedighedsApp.View.UserControls.BottomBar"
+    xmlns:viewmodel="using:LedighedsApp.ViewModel"
+    xmlns:assets="using:LedighedsApp.Model.Assets"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Loaded">
+
+    <Grid x:Name="MainGrid" Style="{StaticResource gridBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="85"/>
+        </Grid.RowDefinitions>
+        <Grid.DataContext>
+            <viewmodel:ActivityVm></viewmodel:ActivityVm>
+        </Grid.DataContext>
+        <Grid.Resources>
+            <assets:SubStringConverter x:Key="cnvInvert"></assets:SubStringConverter>
+        </Grid.Resources>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,0" Background="Ivory">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0, 0, 0, 1" BorderBrush="CornflowerBlue"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" Height="Auto" Width="Auto" VerticalAlignment="Top" Margin="3,0,0,0" Tapped="GoBack_OnTapped" Background="Transparent">
+                    <Button Style="{StaticResource ImageButton}" Height="55" Width="39" MinHeight="30" MinWidth="30">
+                        <Button.Content>
+                            <Image Source="../../../Assets/Images/Buttons/GoBack.png" Height="29" Width="29" />
+                        </Button.Content>
+                    </Button>
+                    <TextBlock Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Content[GO_BACK]}" Margin="-4, 19, 0, 0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Height="26" Width="Auto" VerticalAlignment="Bottom" Tapped="Grid_Tapped">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock  Grid.Column="0" Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Content[CALENDAR_SHOW]}" Margin="12, 0, 0, 0"/>
+                        <Ellipse Grid.Column="1" Margin="9, -1, 0, 0" Width="7" Height="7"  Fill="{Binding SelectedActivityType.RGBColor}"/>
+                        <TextBlock Grid.Column="2"  Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="16" Text="{Binding SelectedActivityType.Title}" Margin="4, 0, 0, 0"/>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="Auto" Width="Auto" VerticalAlignment="Top" Margin="0,0,3,0" >
+                    <TextBlock Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="20" Text="{Binding Content[PAGE_ACTIVITES]}" Margin="0, 15, 12, 0"/>
+                </StackPanel>
+            </Grid>
+
+            <Canvas Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ZIndex="100" HorizontalAlignment="Left" Margin="0, -1, 0, 0">
+                <Border BorderThickness="0, 0, 1, 1" BorderBrush="CornflowerBlue">
+                    <StackPanel x:Name="ActivityTypePanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Margin="0, 0, 0, 0" Height="Auto" Background="Ivory">
+                        <ListView HorizontalAlignment="Stretch" x:Name="ActivityTypeListView" SelectionChanged="ActivityTypeListView_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Ellipse Grid.Column="0" Margin="8, 0, 6, -2" Width="7" Height="7" Fill="{Binding RGBColor}"/>
+                                        <TextBlock Grid.Column="1"  Foreground="CornflowerBlue" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Title}" Margin="0, 0, 8, 0"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+            </Canvas>
+
+            <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"  Width="Auto">
+                <ListView x:Name="ActivitiesListView" ItemsSource="{Binding UserActivities}" SelectedItem="{Binding SelectedActivity, Mode=TwoWay}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal"/>
+                                                </VisualStateGroup>
+                                                <VisualStateGroup x:Name="SelectionStates">
+                                                    <VisualState x:Name="Unselected">
+                                                        <Storyboard>
+                                                            <ColorAnimation Duration="0" Storyboard.TargetName="myback" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="Transparent"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="SelectedUnfocused">
+                                                        <Storyboard>
+                                                            <ColorAnimation Duration="0" Storyboard.TargetName="myback" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="Silver"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Border x:Name="myback" Background="Transparent">
+                                                <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Foreground="Ivory" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Content[TYPE]}" Margin="12, 7, 0, 8"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Foreground="Ivory" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Content[DATE]}" Margin="5, 7, 0, 8"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Foreground="Ivory" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Content[TITLE]}" Margin="5, 7, 0, 8"/>
+                            <Border Grid.Row="1" Grid.ColumnSpan="3" BorderThickness="0, 1, 0, 0" BorderBrush="Ivory"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="12, 6, 0, 8" Orientation="Horizontal">
+                                <Ellipse  Margin="0, 0, 5, -2" Width="7" Height="7"  Fill="{Binding Activity.RGBColor}"/>
+                                <TextBlock  Foreground="Ivory" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Activity.Title}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Foreground="Ivory" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Date}" Margin="5, 6, 0, 8"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Foreground="Ivory" HorizontalAlignment="Left"  FontSize="16" Text="{Binding Activity.Header, Converter={StaticResource cnvInvert}, ConverterParameter='18'}"  Margin="5, 6, 0, 8"/>
+                            <Border Grid.Row="1" Grid.ColumnSpan="3" BorderThickness="0, 0, 0, 1" BorderBrush="Ivory"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </ScrollViewer>
+        </Grid>
+
+        <Popup x:Name="TutorialPopup" Height="Auto" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" HorizontalOffset="-310" IsOpen="True" Child="{Binding Tutorial}"/>
+
+        <StackPanel x:Name="BottomBarContainer" Height="Auto" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Bottom">
+            <BottomBar:BottomBarActivity  Width="Auto" Height="Auto" HorizontalContentAlignment="Stretch" />
+        </StackPanel>
+        <StackPanel x:Name="Background" Visibility="Collapsed" Opacity="0.2"  Grid.RowSpan="2" Grid.Row="0" Grid.Column="0" Background="Black" Margin="0, 0, 0, 0"/>
+    </Grid>
+</Page>

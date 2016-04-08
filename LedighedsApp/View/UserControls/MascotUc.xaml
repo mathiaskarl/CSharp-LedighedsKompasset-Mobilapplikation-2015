@@ -1,0 +1,15 @@
+﻿<UserControl
+    x:Class="LedighedsApp.View.UserControls.MascotUc"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="70"
+    d:DesignWidth="70">
+    
+    <Grid>
+        <Image Width="70" Height="70" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="../../Assets/Images/Mascot/tempMascot.png" Tapped="Image_Tapped"></Image>
+    </Grid>
+</UserControl>

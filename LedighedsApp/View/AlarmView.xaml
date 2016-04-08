@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="LedighedsApp.View.AlarmView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:LedighedsApp.ViewModel"
+    xmlns:userControls="using:LedighedsApp.View.UserControls"
+    xmlns:bottomBar="using:LedighedsApp.View.UserControls.BottomBar"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewmodel:AlarmVm />
+    </Page.DataContext>
+    
+    <Grid Background="CornflowerBlue">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="120" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock x:Name="AlarmTitle" Text="Test" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Foreground="Ivory" />
+
+        <Grid Grid.Row="1">
+            <ListView x:Name="NotificationList" ItemsSource="{Binding Notifications}" 
+                      Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ListView>
+        </Grid>
+        
+        <Grid Grid.Row="2" VerticalAlignment="Bottom">
+            <bottomBar:BottomBar />
+        </Grid>
+
+    </Grid>
+</Page>

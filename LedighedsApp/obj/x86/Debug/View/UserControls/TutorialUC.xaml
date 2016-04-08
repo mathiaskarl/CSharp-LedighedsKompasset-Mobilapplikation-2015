@@ -1,0 +1,50 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="LedighedsApp.View.UserControls.TutorialUc"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LedighedsApp.View.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"                            >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border x:Name="Container" BorderThickness="1" CornerRadius="10" Grid.RowSpan="3" Background="Ivory" Grid.ColumnSpan="2">
+        </Border>
+
+        <Border x:Name="TopBorder" BorderThickness="0" CornerRadius="10, 10, 0, 0" Grid.ColumnSpan="2" Grid.Row="0">
+        </Border>
+
+        <TextBlock x:Name="StepsTextBlock" VerticalAlignment="Center" FontSize="15" TextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock x:ConnectionId='2' Grid.Row="1" Height="Auto" Width="Auto" Grid.Column="0" Foreground="DarkSlateGray" Grid.ColumnSpan="2" VerticalAlignment="Stretch" x:Name="TextBlock" TextWrapping="Wrap" Padding="10" FontSize="16" TextAlignment="Left"                                         ></TextBlock>
+
+        <Button x:ConnectionId='3' x:Name="CloseButton" Style="{StaticResource ImageButton}" Margin="-6, 0, 0, 0" Height="55" HorizontalAlignment="Right" Width="39" MinHeight="20" MinWidth="20" Grid.Row="0" Grid.Column="1"                          >
+            <Button.Content>
+                <Image Source="../../../Assets/Images/Buttons/Close.png" Height="20" Width="20" />
+            </Button.Content>
+        </Button>
+        <Button x:ConnectionId='4' x:Name="BackwardButton" Style="{StaticResource ImageButton}" Height="55" HorizontalAlignment="Center" Width="39" MinHeight="25" MinWidth="25" Grid.Row="2" Grid.Column="0"                             >
+            <Button.Content>
+                <Image Source="../../../Assets/Images/Buttons/GoBack3.png" Height="25" Width="25" />
+            </Button.Content>
+        </Button>
+        <Button x:ConnectionId='5' x:Name="ForwardButton" Style="{StaticResource ImageButton}" Height="55" HorizontalAlignment="Center" Width="39" MinHeight="25" MinWidth="25" Grid.Row="2" Grid.Column="1"                            >
+            <Button.Content>
+                <Image Source="../../../Assets/Images/Buttons/GoForward3.png" Height="25" Width="25" />
+            </Button.Content>
+        </Button>
+
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F9384D5C-B85A-42FA-83F0-9C341EE65119}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LedighedsApp</RootNamespace>
+    <AssemblyName>LedighedsApp</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Model\Assets\AchievementImagePath.cs" />
+    <Compile Include="Model\Assets\AlarmImage.cs" />
+    <Compile Include="Model\Assets\BoolToVisibilityConverter.cs" />
+    <Compile Include="Model\Assets\ComboBoxItem.cs" />
+    <Compile Include="Model\Assets\DateTimeConverter.cs" />
+    <Compile Include="Model\Assets\ErrorHandler.cs" />
+    <Compile Include="Model\Assets\HexToColor.cs" />
+    <Compile Include="Model\Assets\HighLightColor.cs" />
+    <Compile Include="Model\Assets\KeyValueItem.cs" />
+    <Compile Include="Model\Assets\SubStringConverter.cs" />
+    <Compile Include="Model\DataModel\Achievement.cs" />
+    <Compile Include="Model\DataModel\Activity\Activity.cs" />
+    <Compile Include="Model\DataModel\Activity\DbSet\ActivityProperties.cs" />
+    <Compile Include="Model\DataModel\Activity\DbSet\ActivityProperty.cs" />
+    <Compile Include="Model\DataModel\Activity\DbSet\ActivityPropertyTypeValue.cs" />
+    <Compile Include="Model\DataModel\Activity\DbSet\ActivityPropertyValue.cs" />
+    <Compile Include="Model\DataModel\Activity\Models\ActivityContainer.cs" />
+    <Compile Include="Model\DataModel\Activity\Models\JobApplication.cs" />
+    <Compile Include="Model\DataModel\Activity\Models\Meeting.cs" />
+    <Compile Include="Model\DataModel\Activity\UserActivity.cs" />
+    <Compile Include="Model\DataModel\Content.cs" />
+    <Compile Include="Model\DataModel\Enum\AchievementType.cs" />
+    <Compile Include="Model\DataModel\Enum\AnimationType.cs" />
+    <Compile Include="Model\DataModel\Enum\PageName.cs" />
+    <Compile Include="Model\DataModel\Information.cs" />
+    <Compile Include="Model\DataModel\InfoType.cs" />
+    <Compile Include="Model\DataModel\Interface\ICalendarItem.cs" />
+    <Compile Include="Model\DataModel\Language.cs" />
+    <Compile Include="Model\DataModel\NavigationStep.cs" />
+    <Compile Include="Model\DataModel\Notification.cs" />
+    <Compile Include="Model\DataModel\PageInfo.cs" />
+    <Compile Include="Model\DataModel\Settings.cs" />
+    <Compile Include="Model\DataModel\Stats.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationAchievement.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationActivity.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationActivityProperty.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationActivityPropertyTypeValue.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationContent.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationInformation.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationInfoType.cs" />
+    <Compile Include="Model\DataModel\Translation\TranslationTutorial.cs" />
+    <Compile Include="Model\DataModel\Tutorial.cs" />
+    <Compile Include="Model\DataModel\User.cs" />
+    <Compile Include="Model\DataModel\UserAchievement.cs" />
+    <Compile Include="Model\DBMS\Conn.cs" />
+    <Compile Include="Model\DBMS\SQLite.cs" />
+    <Compile Include="Model\DBMS\SQLiteAsync.cs" />
+    <Compile Include="Model\Handler\AchievementHandler.cs" />
+    <Compile Include="Model\Handler\ActivityHandler.cs" />
+    <Compile Include="Model\Handler\CalendarHandler.cs" />
+    <Compile Include="Model\Handler\ContentHandler.cs" />
+    <Compile Include="Model\Handler\InformationHandler.cs" />
+    <Compile Include="Model\Handler\NavigationService.cs" />
+    <Compile Include="Model\Handler\NotificationHandler.cs" />
+    <Compile Include="Model\Handler\ToastService.cs" />
+    <Compile Include="Model\Handler\TutorialHandler.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AchievementVm.cs" />
+    <Compile Include="ViewModel\ActivityVm.cs" />
+    <Compile Include="ViewModel\CalendarVm.cs" />
+    <Compile Include="ViewModel\Contents.cs" />
+    <Compile Include="ViewModel\InformationVm.cs" />
+    <Compile Include="ViewModel\MainPageVm.cs" />
+    <Compile Include="ViewModel\NotificationVm.cs" />
+    <Compile Include="ViewModel\SettingsVm.cs" />
+    <Compile Include="View\AchievementView.xaml.cs">
+      <DependentUpon>AchievementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityView.xaml.cs">
+      <DependentUpon>ActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Animation\AnimationStep.cs" />
+    <Compile Include="View\Animation\GuiAnimation.cs" />
+    <Compile Include="View\Animation\WaterLine.cs" />
+    <Compile Include="View\Animation\WaterSystem.cs" />
+    <Compile Include="View\CalendarDateView.xaml.cs">
+      <DependentUpon>CalendarDateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HandleActivityView.xaml.cs">
+      <DependentUpon>HandleActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HandleNotificationView.xaml.cs">
+      <DependentUpon>HandleNotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HandlePrimaryView.xaml.cs">
+      <DependentUpon>HandlePrimaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InfoCategoryView.xaml.cs">
+      <DependentUpon>InfoCategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NotificationView.xaml.cs">
+      <DependentUpon>NotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\BottomBar\BottomBar.xaml.cs">
+      <DependentUpon>BottomBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\BottomBar\BottomBarActivity.xaml.cs">
+      <DependentUpon>BottomBarActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\BottomBar\BottomBarCalendar.xaml.cs">
+      <DependentUpon>BottomBarCalendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\BottomBar\BottomBarCalendarDate.xaml.cs">
+      <DependentUpon>BottomBarCalendarDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\BottomBar\BottomBarNotification.xaml.cs">
+      <DependentUpon>BottomBarNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\BottomBar\BottomBarSaveItem.xaml.cs">
+      <DependentUpon>BottomBarSaveItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\CalendarDateItem.xaml.cs">
+      <DependentUpon>CalendarDateItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\CalendarItem.xaml.cs">
+      <DependentUpon>CalendarItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\MascotUc.xaml.cs">
+      <DependentUpon>MascotUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\TutorialUC.xaml.cs">
+      <DependentUpon>TutorialUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ViewCalendarItem.xaml.cs">
+      <DependentUpon>ViewCalendarItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\Water.xaml.cs">
+      <DependentUpon>Water.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\Images\Achievements\Activity1.png" />
+    <Content Include="Assets\Images\Achievements\Activity10.png" />
+    <Content Include="Assets\Images\Achievements\Activity50.png" />
+    <Content Include="Assets\Images\Achievements\Alarm1.png" />
+    <Content Include="Assets\Images\Achievements\Alarm10.png" />
+    <Content Include="Assets\Images\Achievements\Alarm50.png" />
+    <Content Include="Assets\Images\AlarmBig.png" />
+    <Content Include="Assets\Images\AlarmBigWhite.png" />
+    <Content Include="Assets\Images\AlarmSmall.png" />
+    <Content Include="Assets\Images\AlarmSmallWhite.png" />
+    <Content Include="Assets\Images\ArrowDown.png" />
+    <Content Include="Assets\Images\arrowLeft.png" />
+    <Content Include="Assets\Images\arrowRight.png" />
+    <Content Include="Assets\Images\ArrowRightBlue.png" />
+    <Content Include="Assets\Images\Bell.png" />
+    <Content Include="Assets\Images\Buttons\BottomAdd.png" />
+    <Content Include="Assets\Images\Buttons\BottomDelete.png" />
+    <Content Include="Assets\Images\Buttons\BottomEdit.png" />
+    <Content Include="Assets\Images\Buttons\BottomSave.png" />
+    <Content Include="Assets\Images\Buttons\BottomShow.png" />
+    <Content Include="Assets\Images\Buttons\ButtonPlaceholder.png" />
+    <Content Include="Assets\Images\Buttons\Close.png" />
+    <Content Include="Assets\Images\Buttons\Close2.png" />
+    <Content Include="Assets\Images\Buttons\GoBack.png" />
+    <Content Include="Assets\Images\Buttons\GoBack2.png" />
+    <Content Include="Assets\Images\Buttons\GoBack3.png" />
+    <Content Include="Assets\Images\Buttons\GoForward.png" />
+    <Content Include="Assets\Images\Buttons\GoForward2.png" />
+    <Content Include="Assets\Images\Buttons\GoForward3.png" />
+    <Content Include="Assets\Images\Buttons\Settings.png" />
+    <Content Include="Assets\Images\Buttons\Settings2.png" />
+    <Content Include="Assets\Images\Mascot\tempMascot.png" />
+    <Content Include="Assets\Images\Menu\Achievements.png" />
+    <Content Include="Assets\Images\Menu\Activity.png" />
+    <Content Include="Assets\Images\Menu\Alarm.png" />
+    <Content Include="Assets\Images\Menu\Calendar.png" />
+    <Content Include="Assets\Images\Menu\Information.png" />
+    <Content Include="Assets\Images\Menu\Settings.png" />
+    <Content Include="Assets\Images\NewEvent.png" />
+    <Content Include="Assets\Images\Refresh.png" />
+    <Content Include="Assets\Images\tempBackground.jpg" />
+    <Content Include="Assets\Images\Update.png" />
+    <Content Include="Assets\LightGray.png" />
+    <Content Include="Assets\MediumGray.png" />
+    <Content Include="Assets\HubBackground.theme-dark.png" />
+    <Content Include="Assets\HubBackground.theme-light.png" />
+    <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\SmallLogo.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-240.png" />
+    <Content Include="Assets\Square71x71Logo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-240.png" />
+    <Content Include="Common\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\AchievementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CalendarDateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CalendarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HandleActivityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HandleNotificationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HandlePrimaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InfoCategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NotificationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\BottomBar\BottomBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\BottomBar\BottomBarActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\BottomBar\BottomBarCalendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\BottomBar\BottomBarCalendarDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\BottomBar\BottomBarNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\BottomBar\BottomBarSaveItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\CalendarDateItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\CalendarItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\MascotUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\TutorialUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ViewCalendarItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\Water.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Storage.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SQLiteWinRT">
+      <HintPath>..\packages\Sqlite-Winrt.3.8.7.1\lib\wpa81\SQLiteWinRT.winmd</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
+      <Name>Behaviors SDK %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Advertising.Mobile.Display, Version=8.1">
+      <Name>Microsoft Advertising SDK for Windows Phone 8.1 %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, version=12.0">
+      <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Phone</Name>
+    </SDKReference>
+    <SDKReference Include="MSTestFramework, Version=12.0">
+      <Name>MSTest for Managed Projects</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.WP81, Version=3.8.10.2">
+      <Name>SQLite for Windows Phone 8.1</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
